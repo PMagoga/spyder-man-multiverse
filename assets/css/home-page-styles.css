@@ -1,5 +1,5 @@
-@import url('reset.css');
-@import url('global.css');
+@import url("reset.css");
+@import url("global.css");
 
 body {
   background-color: var(--primary-color);
@@ -7,7 +7,7 @@ body {
 
 body::before {
   content: "";
-  background-image: url('../images/spider-man-background.jpg');
+  background-image: url("../images/spider-man-background.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -50,7 +50,7 @@ body::before {
   width: 100%;
   height: 70vh;
   position: absolute;
-  transition: filter .5s ease-in-out;
+  transition: filter 0.5s ease-in-out;
 }
 
 .s-card:nth-child(1) {
@@ -150,19 +150,19 @@ body::before {
 
 .s-card--hovered .s-card__image {
   transform: scale(1.4);
-  filter: drop-shadow(30px 10px 4px rgba(0, 0, 0, .5));
+  filter: drop-shadow(30px 10px 4px rgba(0, 0, 0, 0.5));
 }
 
 body#spider-man-01-hovered::before {
-  background-image: url('../images/pic-sm-bg-01.jpg');
+  background-image: url("../images/pic-sm-bg-01.jpg");
 }
 
 body#spider-man-02-hovered::before {
-  background-image: url('../images/pic-sm-bg-02.jpg');
+  background-image: url("../images/pic-sm-bg-02.jpg");
 }
 
 body#spider-man-03-hovered::before {
-  background-image: url('../images/pic-sm-bg-03.jpg');
+  background-image: url("../images/pic-sm-bg-03.jpg");
 }
 
 body[id^="spider-man-"]::before {
@@ -183,4 +183,154 @@ body[id^="spider-man-"] .s-card:not(.s-card--hovered) {
   width: calc(100vw / 3 - 10%);
   transform-style: preserve-3d;
   transition: transform 0.4s ease-in;
+}
+
+/* Media Queries for Responsiveness */
+
+/* --- Tablet and smaller devices (max-width: 992px) --- */
+@media screen and (max-width: 992px) {
+  /* Cards Carousel */
+  .s-cards-carousel {
+    /* Reduce the width to take up more space on the screen */
+    width: calc(100vw / 2 - 10%);
+    /* Adjust perspective to make the 3D effect look better on smaller screens */
+    perspective: 2000px;
+  }
+
+  /* Card Size */
+  .s-card {
+    /* Reduce the height of the cards */
+    height: 60vh;
+  }
+
+  /* 3D Positioning Adjustments */
+  .s-card:nth-child(1) {
+    /* Reduce the translation distance for a tighter carousel */
+    transform: rotateY(0deg) translateZ(40vw);
+  }
+
+  .s-card:nth-child(2) {
+    /* Reduce the translation distance */
+    transform: rotateY(120deg) translateZ(40vw);
+  }
+
+  .s-card:nth-child(3) {
+    /* Reduce the translation distance */
+    transform: rotateY(240deg) translateZ(40vw);
+  }
+
+  /* Card Image on Hover */
+  .s-card--hovered .s-card__image {
+    /* Slightly reduce the scale factor on hover */
+    transform: scale(1.3);
+    /* Adjust drop shadow */
+    filter: drop-shadow(15px 5px 3px rgba(0, 0, 0, 0.5));
+  }
+}
+
+/* --- Mobile devices (max-width: 768px) --- */
+@media screen and (max-width: 768px) {
+  /* Body pseudo-element (background image) */
+  body::before {
+    /* Reduce opacity of the background image to make content stand out more */
+    opacity: 0.1;
+  }
+
+  /* Menu Navigation */
+  .s-menu {
+    /* Remove padding to make the menu compact */
+    padding: 0;
+    /* Center text */
+    text-align: center;
+  }
+
+  .s-menu ul {
+    /* Force the list items to display vertically */
+    display: flex;
+    flex-direction: column;
+    /* Remove default list style */
+    list-style: none;
+    padding: 0;
+  }
+
+  .s-menu__item {
+    /* Make each item take full width */
+    display: block;
+    /* Reduce vertical margin */
+    margin: 0.5rem 0;
+  }
+
+  .s-menu__icon {
+    /* Ensure the icon is centered */
+    display: block;
+    margin: 0.5rem auto;
+  }
+
+  /* Cards Container */
+  .s-container {
+    /* Remove minimum height constraints if necessary */
+    min-height: auto;
+    /* Adjust vertical alignment */
+    align-items: flex-start;
+    /* Add padding for breathing room */
+    padding-top: 3rem;
+  }
+
+  /* Cards Carousel */
+  .s-cards-carousel {
+    /* Reduce the width significantly for a mobile screen */
+    width: calc(100vw - 40%);
+    /* Further reduce perspective */
+    perspective: 1500px;
+  }
+
+  /* Card Size */
+  .s-card {
+    /* Adjust card height for mobile portrait view */
+    height: 50vh;
+    /* Adjust border size */
+    border: 0.25rem solid white;
+  }
+
+  /* 3D Positioning Adjustments */
+  .s-card:nth-child(1) {
+    /* Reduce the translation distance for a very tight carousel */
+    transform: rotateY(0deg) translateZ(30vw);
+  }
+
+  .s-card:nth-child(2) {
+    /* Reduce the translation distance */
+    transform: rotateY(120deg) translateZ(30vw);
+  }
+
+  .s-card:nth-child(3) {
+    /* Reduce the translation distance */
+    transform: rotateY(240deg) translateZ(30vw);
+  }
+
+  /* Card Title on Hover */
+  .s-card--hovered .s-card__title {
+    /* Adjust the position on hover to look better on smaller cards */
+    bottom: 40%;
+  }
+
+  /* Controller */
+  .s-controller {
+    /* Increase margin-top to separate it from the carousel */
+    margin-top: 5rem;
+    /* Adjust bottom position */
+    bottom: 0.5rem;
+  }
+
+  .s-controller__button {
+    /* Reduce button size */
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.8rem;
+  }
+
+  .s-controller__button:nth-child(2) {
+    /* Adjust margin between buttons */
+    margin: 0 2rem;
+  }
 }
